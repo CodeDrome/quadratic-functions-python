@@ -1,6 +1,5 @@
 from typing import List
 
-import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -20,5 +19,8 @@ def plot(qfs: List) -> None:
     plt.ylabel("y")
     plt.legend()
     plt.grid(True)
+    
+    plt.gca().axhline(linewidth=1.5, color="#000000")
+    plt.gca().axvline(linewidth=1.5, color="#000000")
 
     plt.show()
