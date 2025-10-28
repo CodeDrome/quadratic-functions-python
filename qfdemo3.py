@@ -1,4 +1,4 @@
-import qf1
+import qf2
 import qfplotter as qfp
 
 
@@ -43,7 +43,7 @@ def main():
     # for coeffs in coeffs_h_v_t:
     # for coeffs in coeffs_h_s_s:
 
-        qf = qf1.QuadraticFunction(*coeffs)
+        qf = qf2.QuadraticFunction(*coeffs)
         qf.evaluate(xminmax=(xmin, xmax), interval=interval)
 
         quadfuncs.append(qf)

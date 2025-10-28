@@ -1,4 +1,4 @@
-import qf1 as qf1
+import qf1
 
 
 def main():

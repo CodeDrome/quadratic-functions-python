@@ -28,6 +28,8 @@ class QuadraticFunction(object):
         self.b = b
         self.c = c
 
+        self.roots = self.__solve_quadratic_formula()
+
         self.equation_str = self.__create_eq_str()
 
         self.xvalues = None
@@ -92,12 +94,50 @@ class QuadraticFunction(object):
         plt.show()
 
 
+    def __solve_quadratic_formula(self) -> Tuple:
+
+        '''
+        Solves the quadratic equation using the quadratic formula
+        '''
+
+        # create local variables so the calculations 
+        # don't get cluttered with selfs
+        a, b, c = self.a, self.b, self.c
+
+        n = (-b - ((b**2 - 4*a*c))**0.5) / (2*a)
+        p = (-b + ((b**2 - 4*a*c))**0.5) / (2*a)
+
+        return (n,p)
+
+
     def __create_eq_str(self) -> str:
 
         '''
         Creates a human-readable string version of the function.
         '''
 
+        # create the function part of the string
         fs = f"y = {self.a}x² + {self.b}x + {self.c}"
 
-        return fs
+        # create the roots part of the string
+        # depending on whether they are real or complex.
+        if(isinstance(self.roots[0], complex)):
+
+            roots = f"\nroots: {self.__format_complex(self.roots[0])}, {self.__format_complex(self.roots[1])}"
+        
+        else:
+
+            roots = f"\nroots: {self.roots[0]:0.2f}, {self.roots[1]:0.2f}"
+
+        return f"{fs}{roots}"
+        
+
+    def __format_complex(self, c: complex) -> str:
+
+        '''
+        Creates a string from the complex number
+        with 2dp and the letter i.
+        '''
+
+        return f"{c.real:0.2f} + {c.imag:0.2f}i"
+
